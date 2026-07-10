@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klipper Dashboard</title>
+
+    <link rel="stylesheet" href="/static/estilo.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Klipper Dashboard</h1>
+    </header>
+
+    <nav>
+
+        <button>Dashboard</button>
+        <button>Control</button>
+        <button>Consola</button>
+        <button>Archivos</button>
+        <button>Configuración</button>
+
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h2>Estado</h2>
+
+            <p>Impresora: Desconectada</p>
+
+            <p>Temperatura Hotend: <span id="hotend">--</span> °C</p>
+
+            <p>Temperatura Cama: <span id="cama">--</span> °C</p>
+
+            <p>Progreso: <span id="progreso">--</span> %</p>
+
+        </section>
+
+        <section>
+
+            <h2>Controles</h2>
+
+            <button id="home">Home</button>
+
+            <button id="pausa">Pausa</button>
+
+            <button id="reanudar">Reanudar</button>
+
+            <button id="cancelar">Cancelar</button>
+
+        </section>
+
+        <section>
+
+            <h2>Consola</h2>
+
+            <textarea rows="12" cols="70" id="consola" readonly></textarea>
+
+            <br>
+
+            <input type="text" id="gcode" placeholder="Escribir G-Code">
+
+            <button id="enviar">Enviar</button>
+
+        </section>
+
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
