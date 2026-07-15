@@ -27,6 +27,31 @@ botonEnviar.addEventListener("click", function () {
 
 });
 
+const valorX = document.getElementById("x");
+const valorZ = document.getElementById("z");
+const valorY = document.getElementById("y");
+
+const botonMover = document.getElementById("mover");
+botonMover.addEventListener("click", function(){
+
+    const x = parseFloat(valorX.value);
+    const y = parseFloat(valorY.value);
+    const z = parseFloat(valorZ.value);
+
+    fetch("/mover",{
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ 
+            x: x,
+            y: y,
+            z: z
+        })
+    });
+});
+
 const botonPause = document.getElementById("pausa");
 botonPause.addEventListener("click", function(){
     fetch("/pausa");

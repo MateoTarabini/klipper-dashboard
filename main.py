@@ -8,7 +8,6 @@ from fastapi.requests import Request
 
 import funciones
 
-
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -51,3 +50,20 @@ def estados():
     )
     datos = respuesta.json()
     return datos
+
+@app.post("/mover")
+async def mover(request: Request):
+    datos = await request.json()
+    x = datos["x"]
+    y = datos["y"]
+    z = datos["z"]
+    #comando = f"G1 X{x} Y{y} Z{z}"
+    if x != 0 and x > 0:
+        comando = f"G1 X{x}"
+        funciones.enviar_gcode(comando)
+    if y != 0:
+        comando = f"G1 Y{y}"
+        funciones.enviar_gcode(comando)
+    if z != 0:
+        comando = f"G1 Z{z}"
+        funciones.enviar_gcode(comando)

@@ -93,3 +93,48 @@ section button {
 section button:hover {
     background-color: #1976D2;
 }
+
+.mover {
+    background-color: #1b1c1f;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.mover > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mover label {
+    font-weight: bold;
+    min-width: 30px;
+    color: #4dd0e1;
+}
+
+.mover input[type="number"] {
+    width: 100px;
+    padding: 8px 12px;
+    background-color: #2d2f34;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 14px;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.mover input[type="number"]::-webkit-outer-spin-button,
+.mover input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.mover input[type="number"]:focus {
+    outline: none;
+    border-color: #4dd0e1;
+    box-shadow: 0 0 8px rgba(77, 208, 225, 0.3);
+}
+
