@@ -78,3 +78,17 @@ function actualizar_estados(){
         progreso.textContent = datos.status.virtual_sdcard.progress;
     });
 }
+
+function actualizarPosicion() {
+    fetch("/position")
+        .then(respuesta => respuesta.json())
+        .then(datos => {
+            console.log("Datos recibidos:", datos);
+            valorX.value = parseFloat(datos.result.status.toolhead.position[0]) || 0;
+            valorY.value = parseFloat(datos.result.status.toolhead.position[1]) || 0;
+            valorZ.value = parseFloat(datos.result.status.toolhead.position[2]) || 0;
+        })
+        .catch(error => console.error("Error al obtener posición:", error));
+}
+
+setInterval(actualizarPosicion, 1000);

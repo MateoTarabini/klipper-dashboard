@@ -35,7 +35,7 @@ async def enviar(request: Request):
 def pausa():
     funciones.emviar_gcode("PAUSE")
 
-@app.post("/reanudar")
+@app.post("/reanudar") 
 def reanudar():
     funciones.enviar_gcode("RESUME")
 
@@ -67,3 +67,11 @@ async def mover(request: Request):
     if z != 0:
         comando = f"G1 Z{z}"
         funciones.enviar_gcode(comando)
+
+@app.get("/position")
+def position():
+    respuesta = requests.get(
+        "http://192.168.0.149/printer/objects/query?toolhead=position"
+    )
+    datos = respuesta.json()
+    return datos
