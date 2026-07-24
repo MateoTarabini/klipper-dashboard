@@ -19,7 +19,9 @@
 
         <button>Dashboard</button>
         <button>Control</button>
-        <button>Consola</button>
+        <a href="/consola">
+            <button>Consola</button>
+        </a>
         <button>Archivos</button>
         <button>Configuración</button>
 
@@ -31,7 +33,7 @@
 
             <h2>Estado</h2>
 
-            <p>Impresora: Desconectada</p>
+            <p>Impresora: <span id="conect">Desconectada</span></p>
 
             <p>Temperatura Hotend: <span id="hotend">--</span> °C</p>
 
@@ -67,12 +69,12 @@
             </div>
 
             <div>
-                <label>Y</label>
+                <label for="y">Y:</label>
                 <input type="number" id="y" value="0">
             </div>
 
             <div>
-                <label>Z</label>
+                <label for="z">Z:</label>
                 <input type="number" id="z" value="0">
             </div>
 
@@ -95,7 +97,7 @@
             <input type="text" id="gcode" placeholder="Escribir G-Code">
 
             <button id="enviar">Enviar</button>
-
+ 
         </section>
 
     </main>

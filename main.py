@@ -14,6 +14,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
+@app.get("/consola")
+def consola(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="consola.html"
+    )
+
 @app.get("/")
 def inicio(request: Request):
     return templates.TemplateResponse(

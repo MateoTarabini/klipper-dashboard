@@ -1,7 +1,5 @@
 const botonHome = document.getElementById("home");
 botonHome.addEventListener("click", function () {
-
-    console.log("Apretaste Home");
     fetch("/home");
 });
 
@@ -67,16 +65,24 @@ botonCancelar.addEventListener("click", function(){
     fetch("/cancelar");
 })
 
+const conect = document.getElementById("conect");
+
 //info en tiempo real
 setInterval(actualizar_estados, 1000);
-function actualizar_estados(){
+function actualizar_estados() {
     fetch("/estados")
-    .then(respuesta => respuesta.json())
-    .then(datos => {
-        hotend.textContent = parseInt(datos.result.status.extruder.temperature);
-        cama.textContent = parseInt(datos.result.status.heater_bed.temperature);
-        progreso.textContent = datos.status.virtual_sdcard.progress;
-    });
+        .then(respuesta => respuesta.json())
+        .then(datos => {
+            hotend.textContent = parseInt(datos.result.status.extruder.temperature) || "N/A";
+            cama.textContent = parseInt(datos.result.status.heater_bed.temperature) || "N/A";
+            progreso.textContent = datos.result.status.virtual_sdcard.progress || "N/A";
+            conect.textContent = "Conectado";
+        })
+        .catch(error => {
+            console.error("Error al obtener los estados:", error);
+            // Aquí puedes agregar las acciones necesarias cuando no se reciben datos
+            conect.textContent = "Desconectado";
+        });
 }
 
 function actualizarPosicion() {
